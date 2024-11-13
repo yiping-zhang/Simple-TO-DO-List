@@ -1,8 +1,8 @@
-﻿using AutoMapper;
-using ToDoList.Endpoint.Models.Domain;
+﻿using ToDoList.Endpoint.Models.Domain;
 using Db = ToDoList.Persistence.Models;
 using ToDoList.Endpoint.Models.Requests;
 using ToDoList.Persistence.Repositories;
+using AutoMapper;
 
 namespace ToDoList.Endpoint.Services;
 public class ToDoListService : IToDoListService
@@ -10,7 +10,7 @@ public class ToDoListService : IToDoListService
     private readonly IMapper _mapper;
     private readonly IToDoRepository _toDoRepository;
 
-    public ToDoListService(IMapper mapper, IToDoRepository toDoRepository)
+    public ToDoListService( IMapper mapper, IToDoRepository toDoRepository)
     {
         _mapper = mapper;
         _toDoRepository = toDoRepository;
@@ -18,6 +18,7 @@ public class ToDoListService : IToDoListService
 
     public async Task<int> AddItem(AddItemRequest newItem)
     {
+
         var dbItem = _mapper.Map<Db.ToDoItem>(newItem);
         dbItem.CreatedAt = DateTimeOffset.UtcNow;
         var newId = await _toDoRepository.AddItem(dbItem);

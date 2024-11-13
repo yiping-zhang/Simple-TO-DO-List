@@ -3,6 +3,7 @@ using FluentValidation;
 using ToDoList.Endpoint.Models.Domain;
 using ToDoList.Endpoint.Models.Requests;
 using ToDoList.Endpoint.Services;
+using ToDoList.Endpoint.Models.Responses;
 
 namespace ToDoList.Endpoint.Controllers;
 
@@ -47,6 +48,6 @@ public class ToDoController: ControllerBase
         }
 
         var newId = await _toDoListService.AddItem(newItem);
-        return Created(string.Empty, new { Id = newId });
+        return Created(string.Empty, new AddItemResponse { Id = newId });
     }
 }
