@@ -31,7 +31,7 @@ A simple TO DO list application that allows users to see their TODO list, add it
 - [npm](https://www.npmjs.com/) (comes with Node.js)
 - [Angular CLI](https://angular.io/cli) (optional, can be installed globally)
 
-2. Install project dependencies by running `npm install`
+2. Navigate to `ToDoList.UI` directory and install project dependencies by running `npm install`
 
 3. To start the development server and serve the Angular application, run `ng serve`. 
 By default, the application will run at `http://localhost:4200/`
