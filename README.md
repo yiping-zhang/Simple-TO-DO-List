@@ -25,3 +25,13 @@ A simple TO DO list application that allows users to see their TODO list, add it
 | Angular 18   | TypeScript |
 
 ### How to run
+1. Before running the application, ensure you have the following installed on your machine:
+
+- [Node.js](https://nodejs.org/) (v12.x or higher)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Angular CLI](https://angular.io/cli) (optional, can be installed globally)
+
+2. Install project dependencies by running `npm install`
+
+3. To start the development server and serve the Angular application, run `ng serve`. 
+By default, the application will run at `http://localhost:4200/`
