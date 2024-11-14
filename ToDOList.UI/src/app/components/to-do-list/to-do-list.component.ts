@@ -1,15 +1,15 @@
-import {ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToDoService } from './to-do.service';
 import { ToDoItem } from '../../models/to-do-item';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
+// @ts-ignore
 @Component({
   selector: 'app-to-do-list',
   templateUrl: './to-do-list.component.html',
-  styleUrls: ['./to-do-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./to-do-list.component.scss']
 })
 export class ToDoListComponent implements OnInit {
   toDoForm: FormGroup;
@@ -26,9 +26,9 @@ export class ToDoListComponent implements OnInit {
   ngOnInit(): void {
     this.toDoService.getTodoItems().pipe(catchError(
       error => {
-      this.errorMessage = "Failed to retrieve to do list";
-      return of([]);
-    })).subscribe({
+        this.errorMessage = "Failed to retrieve to do list";
+        return of([]);
+      })).subscribe({
       next: data => {
         this.toDoItems = data;
       }
