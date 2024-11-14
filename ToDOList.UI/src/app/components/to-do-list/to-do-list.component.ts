@@ -4,6 +4,7 @@ import { ToDoService } from './to-do.service';
 import { ToDoItem } from '../../models/to-do-item';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { switchMap, finalize } from 'rxjs/operators';
 
 // @ts-ignore
 @Component({
@@ -43,23 +44,30 @@ export class ToDoListComponent implements OnInit {
     if (this.toDoForm.valid) {
       this.isLoading = true;
       const newTodo = this.toDoForm.value;
-      this.toDoService.addTodo(newTodo).subscribe((newId) => {
-        this.toDoService.getTodoItems().subscribe((todos) => {
-          this.toDoItems = todos;
+
+      this.toDoService.addTodo(newTodo).pipe(
+        switchMap(() => this.toDoService.getTodoItems()),
+        finalize(() => {
           this.isLoading = false;
-        });
-        this.toDoForm.reset();
+          this.toDoForm.reset();
+        })
+      ).subscribe((todos) => {
+        this.toDoItems = todos;
       });
     }
   }
 
   deleteTodo(id: number): void {
-    this.toDoService.deleteTodo(id).subscribe(() => {
-      this.toDoService.getTodoItems().subscribe((todos) => {
-        this.toDoItems = todos;
+    this.isLoading = true;
+
+    this.toDoService.deleteTodo(id).pipe(
+      switchMap(() => this.toDoService.getTodoItems()),
+      finalize(() => {
         this.isLoading = false;
-      });
-      this.toDoForm.reset();
+        this.toDoForm.reset();
+      })
+    ).subscribe((todos) => {
+      this.toDoItems = todos;
     });
   }
 }
