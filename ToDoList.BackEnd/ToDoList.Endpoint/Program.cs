@@ -23,6 +23,17 @@ builder.Services.AddAutoMapper(typeof(ToDoItemProfile));
 builder.Services.AddScoped<IToDoListService, ToDoListService>();
 builder.Services.AddScoped<IToDoRepository, ToDoRepository>();
 
+//TODO this is for local development
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200") 
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddControllers();
 
 builder.Services.AddValidatorsFromAssemblyContaining<ToDoItemValidator>();
@@ -43,6 +54,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("AllowLocalhost");
 
 app.MapControllers();
 
