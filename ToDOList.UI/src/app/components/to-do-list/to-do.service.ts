@@ -17,7 +17,7 @@ export class ToDoService {
 
   constructor(private http: HttpClient) {}
 
-  getTodos(): Observable<ToDoItem[]> {
+  getTodoItems(): Observable<ToDoItem[]> {
     return this.http.get<ToDoItem[]>(this.apiUrl);
   }
 
