@@ -2,6 +2,8 @@
 
 A simple TO DO list application that allows users to see their TODO list, add items to it, and delete items from it.
 
+As of Nov 2024, to-do list is persisted in memory. No database is used. 
+
 ## Backend
 
 | Framework    | Language |
@@ -16,7 +18,7 @@ A simple TO DO list application that allows users to see their TODO list, add it
 
 2. Navigate to `ToDoList.BackEnd` directory and restore required NuGet packages by running `dotnet restore`
 
-3. To run the application locally, navigate to `ToDoList.Endpoint` directory and run `dotnet run`. The application will start running on `https://localhost:5001`. Swagger UI  should be opened automatically in your browser at `https://localhost:5001/swagger/index.html`
+3. To run the application locally, navigate to `ToDoList.Endpoint` directory and run `dotnet run`. The application will start running on `https://localhost:5001`. Swagger UI can be accessed in your browser at `https://localhost:5001/swagger/index.html`
 
 ## Frontend
 
