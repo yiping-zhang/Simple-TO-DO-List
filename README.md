@@ -14,9 +14,9 @@ A simple TO DO list application that allows users to see their TODO list, add it
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet)
 - [Visual Studio](https://visualstudio.microsoft.com/) (or another preferred C# IDE)
 
-2. Restore required NuGet packages by running `dotnet restore`
+2. Navigate to `ToDoList.Endppoint` directory and restore required NuGet packages by running `dotnet restore`
 
-3. To run the application locally, run `dotnet run`. The application will start running on `https://localhost:5001`. Swagger UI  should be opened automatically in your browser at `https://localhost:5001/swagger/index.html`
+3. To run the application locally, navigate to `ToDoList.Endpoint` directory and run `dotnet run`. The application will start running on `https://localhost:5001`. Swagger UI  should be opened automatically in your browser at `https://localhost:5001/swagger/index.html`
 
 ## Frontend
 
